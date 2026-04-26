@@ -1,0 +1,959 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Political System of Germany</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Source+Sans+3:wght@300;400;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --black: #0a0a0a;
+    --gold: #F2A900;
+    --red: #CC0000;
+    --white: #F5F0E8;
+    --dark: #111111;
+    --mid: #1e1e1e;
+    --accent: #F2A900;
+  }
+
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--black);
+    color: var(--white);
+    font-family: 'Source Sans 3', sans-serif;
+    overflow-x: hidden;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 3rem;
+    background: rgba(10,10,10,0.92);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(242,169,0,0.2);
+  }
+
+  .nav-logo {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--gold);
+    letter-spacing: 0.05em;
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 1.5rem;
+    list-style: none;
+    flex-wrap: wrap;
+  }
+
+  .nav-links a {
+    color: rgba(245,240,232,0.65);
+    text-decoration: none;
+    font-size: 0.78rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    font-weight: 600;
+    transition: color 0.3s;
+  }
+
+  .nav-links a:hover { color: var(--gold); }
+
+  /* SECTIONS */
+  section {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 100px 6vw 60px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  /* HERO */
+  #hero {
+    background: var(--black);
+    align-items: flex-start;
+    justify-content: center;
+    padding-top: 140px;
+  }
+
+  .flag-stripe-bg {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    opacity: 0.06;
+    pointer-events: none;
+  }
+
+  .flag-stripe-bg div { flex: 1; }
+  .flag-stripe-bg .s1 { background: #222; }
+  .flag-stripe-bg .s2 { background: var(--red); }
+  .flag-stripe-bg .s3 { background: var(--gold); }
+
+  .hero-eyebrow {
+    font-size: 0.75rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--gold);
+    font-weight: 600;
+    margin-bottom: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
+
+  .hero-eyebrow::before {
+    content: '';
+    display: block;
+    width: 40px;
+    height: 2px;
+    background: var(--gold);
+  }
+
+  .hero-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(3rem, 7vw, 6.5rem);
+    font-weight: 900;
+    line-height: 1.0;
+    color: var(--white);
+    max-width: 800px;
+  }
+
+  .hero-title span { color: var(--gold); }
+
+  .hero-subtitle {
+    margin-top: 2rem;
+    font-size: 1.1rem;
+    color: rgba(245,240,232,0.6);
+    max-width: 520px;
+    line-height: 1.7;
+    font-weight: 300;
+  }
+
+  .scroll-cta {
+    margin-top: 3rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    font-size: 0.8rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--gold);
+    font-weight: 600;
+    text-decoration: none;
+    border: 1px solid rgba(242,169,0,0.4);
+    padding: 0.75rem 1.5rem;
+    transition: all 0.3s;
+  }
+
+  .scroll-cta:hover {
+    background: var(--gold);
+    color: var(--black);
+  }
+
+  /* SECTION HEADERS */
+  .section-number {
+    font-size: 0.7rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--gold);
+    font-weight: 600;
+    margin-bottom: 1rem;
+  }
+
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2rem, 4vw, 3.5rem);
+    font-weight: 700;
+    color: var(--white);
+    line-height: 1.15;
+    margin-bottom: 1.5rem;
+  }
+
+  .section-title em {
+    font-style: italic;
+    color: var(--gold);
+  }
+
+  .section-lead {
+    font-size: 1.05rem;
+    color: rgba(245,240,232,0.65);
+    max-width: 600px;
+    line-height: 1.8;
+    font-weight: 300;
+    margin-bottom: 2.5rem;
+  }
+
+  .divider {
+    width: 60px;
+    height: 3px;
+    background: var(--gold);
+    margin-bottom: 2rem;
+  }
+
+  /* CARDS */
+  .cards-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 1.5px;
+    background: rgba(242,169,0,0.15);
+  }
+
+  .card {
+    background: var(--mid);
+    padding: 2rem;
+    border-top: 3px solid transparent;
+    transition: border-color 0.3s, background 0.3s;
+  }
+
+  .card:hover {
+    border-color: var(--gold);
+    background: #252525;
+  }
+
+  .card-icon {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+  }
+
+  .card-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: var(--white);
+    margin-bottom: 0.75rem;
+  }
+
+  .card-text {
+    font-size: 0.9rem;
+    color: rgba(245,240,232,0.6);
+    line-height: 1.7;
+  }
+
+  /* TIMELINE */
+  .timeline {
+    position: relative;
+    padding-left: 2.5rem;
+    max-width: 700px;
+  }
+
+  .timeline::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0; bottom: 0;
+    width: 2px;
+    background: linear-gradient(to bottom, var(--gold), var(--red), transparent);
+  }
+
+  .timeline-item {
+    position: relative;
+    padding: 0 0 2.5rem 1.5rem;
+  }
+
+  .timeline-item::before {
+    content: '';
+    position: absolute;
+    left: -2.1rem;
+    top: 0.4rem;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: var(--gold);
+    border: 2px solid var(--black);
+  }
+
+  .timeline-year {
+    font-size: 0.7rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--gold);
+    font-weight: 700;
+    margin-bottom: 0.4rem;
+  }
+
+  .timeline-label {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--white);
+    margin-bottom: 0.4rem;
+  }
+
+  .timeline-desc {
+    font-size: 0.88rem;
+    color: rgba(245,240,232,0.55);
+    line-height: 1.65;
+  }
+
+  /* TWO-COL LAYOUT */
+  .two-col {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: start;
+  }
+
+  @media (max-width: 768px) {
+    .two-col { grid-template-columns: 1fr; gap: 2rem; }
+    nav { padding: 1rem 1.5rem; }
+    .nav-links { display: none; }
+    section { padding: 90px 5vw 50px; }
+  }
+
+  /* ORGANS DIAGRAM */
+  .organs {
+    display: flex;
+    flex-direction: column;
+    gap: 1px;
+    background: rgba(242,169,0,0.1);
+    max-width: 600px;
+  }
+
+  .organ-row {
+    display: flex;
+    align-items: stretch;
+    background: var(--mid);
+    transition: background 0.2s;
+    cursor: default;
+  }
+
+  .organ-row:hover { background: #2a2a2a; }
+
+  .organ-label {
+    width: 180px;
+    min-width: 180px;
+    padding: 1.25rem 1.25rem;
+    border-right: 3px solid var(--gold);
+    font-family: 'Playfair Display', serif;
+    font-weight: 700;
+    font-size: 0.95rem;
+    color: var(--gold);
+    display: flex;
+    align-items: center;
+  }
+
+  .organ-desc {
+    padding: 1.25rem 1.5rem;
+    font-size: 0.88rem;
+    color: rgba(245,240,232,0.6);
+    line-height: 1.65;
+    display: flex;
+    align-items: center;
+  }
+
+  /* STAT BOXES */
+  .stats-row {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 1.5px;
+    background: rgba(242,169,0,0.15);
+    margin-top: 2rem;
+  }
+
+  .stat-box {
+    background: var(--mid);
+    padding: 1.75rem 1.5rem;
+    text-align: center;
+  }
+
+  .stat-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.4rem;
+    font-weight: 900;
+    color: var(--gold);
+    line-height: 1;
+    margin-bottom: 0.5rem;
+  }
+
+  .stat-label {
+    font-size: 0.78rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: rgba(245,240,232,0.5);
+    font-weight: 600;
+  }
+
+  /* PARTIES */
+  .parties-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1.5px;
+    background: rgba(242,169,0,0.12);
+  }
+
+  .party-card {
+    background: var(--mid);
+    padding: 1.75rem;
+    border-left: 4px solid transparent;
+    transition: all 0.3s;
+  }
+
+  .party-card:hover { background: #252525; }
+
+  .party-abbr {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.5rem;
+    font-weight: 900;
+    margin-bottom: 0.4rem;
+  }
+
+  .party-name {
+    font-size: 0.78rem;
+    color: rgba(245,240,232,0.5);
+    font-weight: 300;
+    margin-bottom: 0.75rem;
+    letter-spacing: 0.02em;
+  }
+
+  .party-desc {
+    font-size: 0.85rem;
+    color: rgba(245,240,232,0.6);
+    line-height: 1.6;
+  }
+
+  /* QUOTE BLOCK */
+  .quote-block {
+    border-left: 4px solid var(--gold);
+    padding: 1.5rem 2rem;
+    background: var(--mid);
+    margin: 2rem 0;
+    max-width: 600px;
+  }
+
+  .quote-text {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.25rem;
+    font-style: italic;
+    color: var(--white);
+    line-height: 1.6;
+    margin-bottom: 0.75rem;
+  }
+
+  .quote-source {
+    font-size: 0.78rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--gold);
+    font-weight: 600;
+  }
+
+  /* FOOTER */
+  footer {
+    background: #050505;
+    padding: 3rem 6vw;
+    border-top: 1px solid rgba(242,169,0,0.15);
+    text-align: center;
+  }
+
+  .footer-flag {
+    display: flex;
+    justify-content: center;
+    gap: 4px;
+    margin-bottom: 1.5rem;
+  }
+
+  .footer-flag div {
+    width: 40px;
+    height: 12px;
+    border-radius: 2px;
+  }
+
+  .flag-black { background: #222; border: 1px solid rgba(255,255,255,0.1); }
+  .flag-red { background: var(--red); }
+  .flag-gold { background: var(--gold); }
+
+  .footer-text {
+    font-size: 0.85rem;
+    color: rgba(245,240,232,0.35);
+    font-weight: 300;
+  }
+
+  /* BACKGROUNDS */
+  #overview { background: linear-gradient(160deg, #0f0f0f 60%, #1a0f00); }
+  #history { background: var(--dark); }
+  #branches { background: linear-gradient(160deg, #0f0f0f 40%, #100000); }
+  #bundestag { background: var(--dark); }
+  #parties { background: linear-gradient(160deg, #0f0f0f, #0d0d00); }
+  #elections { background: var(--dark); }
+  #federalism { background: linear-gradient(160deg, #0f0f0f, #00100a); }
+  #grundgesetz { background: var(--dark); }
+
+  /* ANIMATE ON SCROLL */
+  .fade-in {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+  }
+
+  .fade-in.visible {
+    opacity: 1;
+    transform: none;
+  }
+
+  /* ACCENT LINE */
+  .accent-line {
+    width: 100%;
+    height: 1px;
+    background: linear-gradient(to right, var(--gold), transparent);
+    margin: 3rem 0;
+    opacity: 0.3;
+  }
+
+  /* HIGHLIGHT PILL */
+  .pill {
+    display: inline-block;
+    background: rgba(242,169,0,0.12);
+    border: 1px solid rgba(242,169,0,0.3);
+    color: var(--gold);
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 0.3rem 0.85rem;
+    border-radius: 2px;
+    margin-bottom: 1.25rem;
+  }
+
+  /* PRINCIPLE BLOCKS */
+  .principles {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1.5px;
+    background: rgba(242,169,0,0.12);
+    margin-top: 2rem;
+  }
+
+  .principle {
+    background: var(--mid);
+    padding: 1.75rem;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .principle::after {
+    content: attr(data-num);
+    position: absolute;
+    bottom: -0.5rem;
+    right: 0.75rem;
+    font-family: 'Playfair Display', serif;
+    font-size: 5rem;
+    font-weight: 900;
+    color: rgba(242,169,0,0.06);
+    line-height: 1;
+  }
+
+  .principle-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--gold);
+    margin-bottom: 0.6rem;
+  }
+
+  .principle-text {
+    font-size: 0.86rem;
+    color: rgba(245,240,232,0.6);
+    line-height: 1.65;
+  }
+
+  /* TEAM BLOCK */
+  .team-block {
+    margin-top: 2.5rem;
+  }
+
+  .team-label {
+    font-size: 0.7rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: rgba(245,240,232,0.4);
+    font-weight: 600;
+    margin-bottom: 1rem;
+  }
+
+  .team-members {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1px;
+    background: rgba(242,169,0,0.15);
+    max-width: 700px;
+  }
+
+  .team-member {
+    background: #1a1a1a;
+    padding: 0.9rem 1.4rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
+    flex: 1;
+    min-width: 180px;
+    border-top: 2px solid rgba(242,169,0,0.4);
+    transition: background 0.2s;
+  }
+
+  .team-member:hover { background: #222; }
+
+  .team-name {
+    font-family: 'Playfair Display', serif;
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: var(--white);
+  }
+
+  .team-id {
+    font-size: 0.75rem;
+    color: var(--gold);
+    font-weight: 600;
+    letter-spacing: 0.05em;
+  }
+
+  .team-dept {
+    font-size: 0.7rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: rgba(245,240,232,0.4);
+    font-weight: 600;
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">🦅 Bundesrepublik</div>
+  <ul class="nav-links">
+    <li><a href="#overview">Overview</a></li>
+    <li><a href="#history">History</a></li>
+    <li><a href="#branches">Branches</a></li>
+    <li><a href="#bundestag">Bundestag</a></li>
+    <li><a href="#parties">Parties</a></li>
+    <li><a href="#elections">Elections</a></li>
+    <li><a href="#federalism">Federalism</a></li>
+    <li><a href="#grundgesetz">Basic Law</a></li>
+  </ul>
+</nav>
+
+<!-- SLIDE 1: HERO -->
+<section id="hero">
+  <div class="flag-stripe-bg">
+    <div class="s1"></div>
+    <div class="s2"></div>
+    <div class="s3"></div>
+  </div>
+  <div class="hero-eyebrow">Political System — Presentation</div>
+  <h1 class="hero-title">The Political<br>System of<br><span>Germany</span></h1>
+  <p class="hero-subtitle">A federal parliamentary republic built on democracy, federalism, and a commitment to human dignity — shaped by history and enshrined in the Grundgesetz.</p>
+
+  <div class="team-block">
+    <div class="team-label">Presented by</div>
+    <div class="team-members">
+      <div class="team-member">
+        <span class="team-name">Dhashwanth Sai M</span>
+        <span class="team-id">RA2511027010008</span>
+        <span class="team-dept">DSBS</span>
+      </div>
+      <div class="team-member">
+        <span class="team-name">Rethies B</span>
+        <span class="team-id">RA2511030010377</span>
+        <span class="team-dept">NWC</span>
+      </div>
+      <div class="team-member">
+        <span class="team-name">Aashitha S V</span>
+        <span class="team-id">RA2511030010359</span>
+        <span class="team-dept">NWC</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SLIDE 2: OVERVIEW -->
+<section id="overview">
+  <div class="fade-in">
+    <div class="section-number">Slide 02 — Overview</div>
+    <h2 class="section-title">What Kind of State<br>is <em>Germany?</em></h2>
+    <div class="divider"></div>
+    <p class="section-lead">Germany is a federal parliamentary republic. Power is shared between a national government and 16 states (Länder), governed by the principles set in the Grundgesetz (Basic Law) of 1949.</p>
+    <div class="stats-row">
+      <div class="stat-box"><div class="stat-num">16</div><div class="stat-label">Federal States</div></div>
+      <div class="stat-box"><div class="stat-num">736</div><div class="stat-label">Bundestag Seats</div></div>
+      <div class="stat-box"><div class="stat-num">4</div><div class="stat-label">Year Electoral Term</div></div>
+      <div class="stat-box"><div class="stat-num">1949</div><div class="stat-label">Basic Law Enacted</div></div>
+      <div class="stat-box"><div class="stat-num">5%</div><div class="stat-label">Threshold for Parliament</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- SLIDE 3: HISTORY -->
+<section id="history">
+  <div class="fade-in">
+    <div class="section-number">Slide 03 — Historical Background</div>
+    <h2 class="section-title">Forged by<br><em>History</em></h2>
+    <div class="divider"></div>
+    <p class="section-lead">Germany's current democratic system emerged from the ashes of World War II and decades of division, shaped by painful lessons from the Weimar Republic and Nazi dictatorship.</p>
+    <div class="timeline">
+      <div class="timeline-item">
+        <div class="timeline-year">1919</div>
+        <div class="timeline-label">Weimar Republic</div>
+        <div class="timeline-desc">Germany's first democracy — fragile, plagued by economic crisis and political extremism, ultimately collapsing in 1933.</div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-year">1933–1945</div>
+        <div class="timeline-label">Nazi Dictatorship</div>
+        <div class="timeline-desc">Hitler's totalitarian regime dismantled democratic institutions. The Holocaust and WWII left Germany devastated and divided.</div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-year">1949</div>
+        <div class="timeline-label">Federal Republic Founded</div>
+        <div class="timeline-desc">The Grundgesetz (Basic Law) is adopted. West Germany establishes a stable parliamentary democracy with strong safeguards against authoritarianism.</div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-year">1990</div>
+        <div class="timeline-label">Reunification</div>
+        <div class="timeline-desc">East and West Germany reunite on October 3. The Basic Law extends to all 16 states, forming the modern Federal Republic of Germany.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SLIDE 4: THREE BRANCHES -->
+<section id="branches">
+  <div class="fade-in">
+    <div class="section-number">Slide 04 — Structure of Government</div>
+    <h2 class="section-title">Three Branches of<br><em>Government</em></h2>
+    <div class="divider"></div>
+    <p class="section-lead">Germany's government is divided into three branches, each with distinct powers and checks on the others to prevent concentration of authority.</p>
+    <div class="cards-grid">
+      <div class="card">
+        <div class="card-icon">⚖️</div>
+        <div class="card-title">Legislative</div>
+        <div class="card-text">The Bundestag (lower house) and Bundesrat (upper house of states) make federal laws. The Bundestag is directly elected by citizens every 4 years.</div>
+      </div>
+      <div class="card">
+        <div class="card-icon">🏛️</div>
+        <div class="card-title">Executive</div>
+        <div class="card-text">The Federal Chancellor (Bundeskanzler) leads the government and holds real executive power. The Federal President is the head of state with a ceremonial role.</div>
+      </div>
+      <div class="card">
+        <div class="card-icon">🔏</div>
+        <div class="card-title">Judicial</div>
+        <div class="card-text">The Federal Constitutional Court (Bundesverfassungsgericht) is the guardian of the Basic Law. It can strike down laws that violate the constitution.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SLIDE 5: BUNDESTAG & KEY ORGANS -->
+<section id="bundestag">
+  <div class="fade-in">
+    <div class="section-number">Slide 05 — Key Constitutional Organs</div>
+    <h2 class="section-title">The Five <em>Constitutional</em><br>Organs</h2>
+    <div class="divider"></div>
+    <p class="section-lead">Germany's Basic Law establishes five supreme constitutional bodies that form the backbone of the federal state.</p>
+    <div class="organs">
+      <div class="organ-row">
+        <div class="organ-label">Bundestag</div>
+        <div class="organ-desc">The federal parliament — 736 directly elected members. Passes laws, elects the Chancellor, and controls the budget.</div>
+      </div>
+      <div class="organ-row">
+        <div class="organ-label">Bundesrat</div>
+        <div class="organ-desc">Represents the 16 Länder (states). Participates in federal legislation, especially laws affecting the states.</div>
+      </div>
+      <div class="organ-row">
+        <div class="organ-label">Federal President</div>
+        <div class="organ-desc">Head of state, elected for 5 years by the Federal Assembly. Mainly ceremonial — signs laws, represents Germany abroad.</div>
+      </div>
+      <div class="organ-row">
+        <div class="organ-label">Federal Government</div>
+        <div class="organ-desc">Led by the Chancellor, who sets policy guidelines. Ministers run individual departments. The Chancellor cannot be removed without a constructive vote of no confidence.</div>
+      </div>
+      <div class="organ-row">
+        <div class="organ-label">Federal Court</div>
+        <div class="organ-desc">The Bundesverfassungsgericht interprets the Basic Law. Its rulings are final and binding on all state powers.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SLIDE 6: POLITICAL PARTIES -->
+<section id="parties">
+  <div class="fade-in">
+    <div class="section-number">Slide 06 — Political Parties</div>
+    <h2 class="section-title">The Major<br><em>Political Parties</em></h2>
+    <div class="divider"></div>
+    <p class="section-lead">Germany's multiparty system encourages coalition governments. Multiple parties compete for seats in the Bundestag.</p>
+    <div class="parties-grid">
+      <div class="party-card" style="border-color:#000000;">
+        <div class="party-abbr" style="color:#333;">CDU/CSU</div>
+        <div class="party-name">Christian Democratic Union / Christian Social Union</div>
+        <div class="party-desc">Centre-right. The dominant force in German politics for much of the post-war era. Angela Merkel served 16 years as Chancellor.</div>
+      </div>
+      <div class="party-card" style="border-color:#E3000F;">
+        <div class="party-abbr" style="color:#E3000F;">SPD</div>
+        <div class="party-name">Social Democratic Party</div>
+        <div class="party-desc">Centre-left. One of Germany's oldest parties. Focuses on social justice, workers' rights, and the welfare state.</div>
+      </div>
+      <div class="party-card" style="border-color:#1AA037;">
+        <div class="party-abbr" style="color:#1AA037;">Greens</div>
+        <div class="party-name">Bündnis 90/Die Grünen</div>
+        <div class="party-desc">Green politics, environmentalism, and progressive social values. Coalition partner in many recent governments.</div>
+      </div>
+      <div class="party-card" style="border-color:#FFED00;">
+        <div class="party-abbr" style="color:#bba800;">FDP</div>
+        <div class="party-name">Free Democratic Party</div>
+        <div class="party-desc">Classical liberal. Pro-market, civil liberties, and individual freedoms. Frequently a coalition kingmaker.</div>
+      </div>
+      <div class="party-card" style="border-color:#BE3075;">
+        <div class="party-abbr" style="color:#BE3075;">AfD</div>
+        <div class="party-name">Alternative für Deutschland</div>
+        <div class="party-desc">Right-wing populist party founded in 2013. Entered Bundestag in 2017, opposition party known for nationalist positions.</div>
+      </div>
+      <div class="party-card" style="border-color:#DF0404;">
+        <div class="party-abbr" style="color:#DF0404;">Die Linke</div>
+        <div class="party-name">The Left</div>
+        <div class="party-desc">Democratic socialist party. Advocates redistribution, pacifism, and strong social safety nets. Successor to East German SED.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SLIDE 7: ELECTIONS -->
+<section id="elections">
+  <div class="fade-in two-col">
+    <div>
+      <div class="section-number">Slide 07 — Electoral System</div>
+      <h2 class="section-title">How Germany<br><em>Votes</em></h2>
+      <div class="divider"></div>
+      <p class="section-lead">Germany uses a unique mixed-member proportional representation system that combines direct constituency voting with party list votes.</p>
+      <div class="quote-block">
+        <div class="quote-text">"Every German citizen gets two votes — one for a local candidate, one for a party."</div>
+        <div class="quote-source">The Two-Vote System</div>
+      </div>
+    </div>
+    <div>
+      <div class="cards-grid" style="grid-template-columns:1fr;">
+        <div class="card">
+          <div class="card-icon">🗳️</div>
+          <div class="card-title">First Vote (Erststimme)</div>
+          <div class="card-text">Voters choose a direct candidate from their constituency. The winner takes a direct seat in the Bundestag — winner takes all in each of 299 constituencies.</div>
+        </div>
+        <div class="card">
+          <div class="card-icon">📋</div>
+          <div class="card-title">Second Vote (Zweitstimme)</div>
+          <div class="card-text">The more important vote — cast for a party's regional list. Determines the overall proportion of seats each party receives in the Bundestag.</div>
+        </div>
+        <div class="card">
+          <div class="card-icon">📊</div>
+          <div class="card-title">5% Threshold</div>
+          <div class="card-text">Parties must receive at least 5% of second votes (or win 3 direct seats) to enter parliament — preventing extreme fragmentation.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SLIDE 8: FEDERALISM -->
+<section id="federalism">
+  <div class="fade-in">
+    <div class="section-number">Slide 08 — Federalism</div>
+    <h2 class="section-title">The Federal<br><em>Structure</em></h2>
+    <div class="divider"></div>
+    <p class="section-lead">Germany is a federal state — power is deliberately distributed between the central (Bund) government and 16 semi-autonomous states (Länder). This prevents over-centralisation of power.</p>
+    <div class="cards-grid">
+      <div class="card">
+        <div class="card-icon">🏛️</div>
+        <div class="card-title">Federal (Bund) Powers</div>
+        <div class="card-text">Defence, foreign policy, immigration, currency, and federal infrastructure fall under Bund jurisdiction.</div>
+      </div>
+      <div class="card">
+        <div class="card-icon">🗺️</div>
+        <div class="card-title">State (Länder) Powers</div>
+        <div class="card-text">Education, police, local government, cultural affairs, and broadcasting are primarily handled by the 16 Länder.</div>
+      </div>
+      <div class="card">
+        <div class="card-icon">🤝</div>
+        <div class="card-title">Shared Powers</div>
+        <div class="card-text">Areas like economic law, housing, and environment are shared — the Bundesrat ensures states have a voice in federal legislation.</div>
+      </div>
+      <div class="card">
+        <div class="card-icon">⚖️</div>
+        <div class="card-title">Why Federalism?</div>
+        <div class="card-text">A deliberate response to Nazi centralism — distributing power prevents any single entity from dominating the entire state.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SLIDE 9: GRUNDGESETZ -->
+<section id="grundgesetz">
+  <div class="fade-in">
+    <div class="section-number">Slide 09 — The Basic Law</div>
+    <h2 class="section-title">The <em>Grundgesetz</em><br>— Germany's Constitution</h2>
+    <div class="divider"></div>
+    <p class="section-lead">The Grundgesetz (Basic Law), adopted on May 23, 1949, is the supreme law of Germany. Written after WWII, it was designed to prevent the rise of authoritarianism, protecting human dignity as its first and inviolable article.</p>
+
+    <div class="principles">
+      <div class="principle" data-num="1">
+        <div class="principle-title">Human Dignity</div>
+        <div class="principle-text">Article 1: "Human dignity is inviolable." The most protected principle — even the Bundestag cannot change it.</div>
+      </div>
+      <div class="principle" data-num="2">
+        <div class="principle-title">Democracy</div>
+        <div class="principle-text">Germany is a democratic republic. All state authority derives from the people through elections and votes.</div>
+      </div>
+      <div class="principle" data-num="3">
+        <div class="principle-title">Federalism</div>
+        <div class="principle-text">The federal structure distributes power between national and state governments, enshrined permanently in the Basic Law.</div>
+      </div>
+      <div class="principle" data-num="4">
+        <div class="principle-title">Rule of Law</div>
+        <div class="principle-text">Rechtsstaat — all government action must be grounded in law. No one is above the law, including the government.</div>
+      </div>
+      <div class="principle" data-num="5">
+        <div class="principle-title">Social State</div>
+        <div class="principle-text">Germany is committed to a welfare state that ensures social security, health, and basic needs for all citizens.</div>
+      </div>
+    </div>
+
+    <div style="margin-top: 3rem;">
+      <div class="quote-block">
+        <div class="quote-text">"The free democratic basic order cannot be abolished — even by a majority vote."</div>
+        <div class="quote-source">Eternity Clause, Article 79(3), Grundgesetz</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-flag">
+    <div class="flag-black"></div>
+    <div class="flag-red"></div>
+    <div class="flag-gold"></div>
+  </div>
+  <p class="footer-text">Bundesrepublik Deutschland — Political System Presentation</p>
+</footer>
+
+<script>
+  // Fade-in on scroll
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
